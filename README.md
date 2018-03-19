@@ -1,1 +1,1 @@
-# MyComicSans-Project
+# ComicHub-Project
