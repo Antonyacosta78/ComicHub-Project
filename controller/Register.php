@@ -58,27 +58,33 @@ class Register extends Controller{
                
                if($_FILES["userimg"]["error"]==0){
                    if($_FILES["userimg"]["type"]!== "image/png" || $_FILES["userimg"]["type"]!== "image/jpeg" || $_FILES["userimg"]["type"]!== "image/gif"){
-                       $dados["userimg"] = $_FILES["userimg"]["name"];
-                   }else{
                        $this->exceptionHandler = Message::NO_VALID_IMAGE_FORMAT;
-                   }                 
+                   }else{
+                       $extension = explode(".",$_FILES['userimg']['name']);
+                       $_FILES['userimg']['name'] = "profile.".$extension[1];
+                   }
                }elseif($_FILES["userimg"]["error"]==4){
                    $dados["userimg"] = "default.png";
                }
                
-               
                $return = ($this->exceptionHandler) ? false : true;
+               
            }else{
                $this->exceptionHandler = Message::EMPTY_FIELDS;
                foreach($is_empty as $field){
                    $this->exceptionHandler.=$field;
-               }
+                }
            }
+           
            if($return){
                $dados['password'] = md5($dados['password']);
-               $this->model->insertUser(new dataObject($dados));
+               
+               $id = $this->model->insertUser(new dataObject($dados));
                if($_FILES["userimg"]["error"]==0){
-                move_uploaded_file($_FILES["userimg"]["tmp_name"],"view/images".$_FILES["userimg"]["name"]);
+                if(!file_exists($id)){
+                    mkdir($id);
+                }
+                move_uploaded_file($_FILES["userimg"]["tmp_name"],"userContent/".$id."/".$_FILES['userimg']['name']);
                }
            }
            

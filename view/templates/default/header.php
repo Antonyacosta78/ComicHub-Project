@@ -21,7 +21,6 @@
     <script src="<?php echo $this->asset;?>vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo $this->asset;?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
-
   </head>
 
   <body>

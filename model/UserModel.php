@@ -56,7 +56,7 @@ class UserModel extends Model{
             ':email'=>$user->get("email"),
             ':birthdate'=>$user->get("birthdate")
         ];
-        $return = $this->ExecuteCommand($sql,$parameters);
+        $return = $this->ExecuteCommand($sql,$parameters,true);
         return $return;
     }
     
