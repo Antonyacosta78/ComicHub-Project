@@ -4,6 +4,7 @@ USE ComicHub;
 CREATE TABLE IF NOT EXISTS User(
 ID INT NOT NULL AUTO_INCREMENT,
 Username VARCHAR(15) UNIQUE,
+Userimg VARCHAR(30),
 Pass VARCHAR(100),
 Email VARCHAR(70), 
 Birthdate DATE,
@@ -56,12 +57,12 @@ FOREIGN KEY (UserID) REFERENCES User(ID)
 
 CREATE TABLE IF NOT EXISTS UserSettings(
 ID INT NOT NULL AUTO_INCREMENT,
-UserID INT NOT NULL,
 NSFWOnFeed TINYINT,
 NSFWOnSearch TINYINT,
 FavouriteGenres VARCHAR(90),
-PRIMARY KEY (ID),
-FOREIGN KEY (UserID) REFERENCES User(ID)
+LastPasswordChange DATE,
+PasswordRestored TINYINT,
+PRIMARY KEY (ID)
 );
 
 CREATE TABLE IF NOT EXISTS ReadList(
@@ -77,20 +78,22 @@ FOREIGN KEY (UserID) REFERENCES User(ID)
 DELIMITER //
 CREATE TRIGGER set_settings AFTER INSERT ON User FOR EACH ROW 
 BEGIN
-	SET @variable = LAST_INSERT_ID();
-    INSERT INTO UserSettings VALUES(NULL, @variable,0,0,NULL);
-END;
-DELIMITER;
+	SET @current_date = CURDATE();
+    INSERT INTO UserSettings(ID,NSFWOnFeed,NSFWOnSearch,FavouriteGenres,LastPasswordChange,PasswordRestored) 
+    VALUES (NULL,0,0,NULL,@current_date ,0);
+    
+END //
+
+DELIMITER ;
  
- /*NEEDS TO BE FIXED
- 
- DELIMITER // 
+DELIMITER // 
 CREATE TRIGGER adjust_rating AFTER INSERT ON Review FOR EACH ROW
-BEGIN
-	SET @last_inserted_row = SELECT ID FROM REVIEW ORDER BY ID DESC LIMIT 1;
-    SET @comic_id_of_row = SELECT ComicID FROM Review WHERE ID = @last_inserted_id;
-	SET @average_rating = SELECT AVG(Rating) FROM Review WHERE ComicID = @comic_id_of_row;
-    UPDATE TABLE Comic SET Global_rating = @average_rating WHERE ID =  @comic_id_of_row;
-END;
-DELIMITER;
-*
+-- faz média do rating de um comic
+BEGIN 
+	SET @last_inserted_id =LAST_INSERT_ID();
+    SET @comic_id_of_row = (SELECT ComicID FROM Review WHERE ID = @last_inserted_id);
+	SET @average_rating = (SELECT AVG(Rating) FROM Review WHERE ComicID = @comic_id_of_row);
+    UPDATE Comic SET Global_rating = @average_rating WHERE ID =  @comic_id_of_row;
+END//
+
+DELIMITER ;
