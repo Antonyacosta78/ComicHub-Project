@@ -16,10 +16,11 @@
     <!-- Custom styles for this template -->
     <link href="<?php echo $this->asset;?>css/small-business.css" rel="stylesheet">
     <link href="<?php echo $this->asset;?>css/simple-sidebar.css" rel="stylesheet">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
      <!-- Bootstrap core JavaScript -->
     <script src="<?php echo $this->asset;?>vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo $this->asset;?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
 
   </head>
 
