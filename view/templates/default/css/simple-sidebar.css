@@ -12,10 +12,13 @@ body {
     background-color: black;
 }
 
-
+.left-content{
+    justify-content: flex-end;
+}
 
 .img-logo{
     margin: 0 auto;
+    max-height: 50px;
 }
 
 html, body {
@@ -56,7 +59,7 @@ footer {
 
 
 #sidebar-wrapper {
-  z-index: 1000;
+  z-index: 999;
   position: fixed;
   left: 250px;
   width: 0;

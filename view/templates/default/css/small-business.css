@@ -58,6 +58,15 @@ body {
     text-align: center;
 }
 
+.btn-menu-top{
+    border: 1px solid gray;
+    border-radius: 1px;
+    margin: 5px;
+    width: 40px;
+    height: inherit;
+    text-align: center;
+}
+
 #div-img-user{
     border: 1px solid gray;
     border-radius: 50%;
