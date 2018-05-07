@@ -17,5 +17,6 @@ class Home extends Controller{
         $this->view->load('home',$data);
         $this->view->load('footer');
     }
+    
 
 }
