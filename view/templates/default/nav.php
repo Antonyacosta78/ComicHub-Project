@@ -37,7 +37,16 @@
                 <li>
                     <div class="btn-menu" title="Listas de Leitura"><a href="comicsfavoritas.html"><i class="fa fa-bookmark"></i></a></div>
                 </li>
-                
+                <hr style="background-color: #999999; width: 80%; margin: 0 5px;">
+                <?php
+                if($data['menu']):
+                    foreach($data['menu'] as $item):?>
+                <li>
+                    <div class="btn-menu" title="<?php echo $item->title; ?>"><a href="<?php echo $this->base_url."Pages/load/".$item->url?>"><i class="fa <?php echo $item->icon; ?>"></i></a></div>
+                </li>
+                <?php endforeach;
+                endif;
+                ?>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->

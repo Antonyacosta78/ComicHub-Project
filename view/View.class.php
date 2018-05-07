@@ -23,6 +23,9 @@ class View {
     }
 
     public function load($page, $data = null) {
+        if($page == "nav" && $this->template == "default"){
+            $data['menu']=$this->getPagesFromJSON();
+        }
         include_once "view/templates/" . $this->template . "/$page.php";
     }
 
@@ -38,4 +41,13 @@ class View {
          header("Location: $url");
     }
 
+    private function getPagesFromJSON(){
+        $itemList = [];
+        $jsonString = file_get_contents("view/custompages.json");
+        $jsonArray  = json_decode($jsonString);
+        foreach($jsonArray as $item){
+            $itemList[] = new dataObject($item);
+        }
+        return $itemList;
+    }
 }
