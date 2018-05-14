@@ -37,7 +37,9 @@
                 <li>
                     <div class="btn-menu" title="Listas de Leitura"><a href="comicsfavoritas.html"><i class="fa fa-bookmark"></i></a></div>
                 </li>
+                <br>
                 <hr style="background-color: #999999; width: 80%; margin: 0 5px;">
+                <br>
                 <?php
                 if($data['menu']):
                     foreach($data['menu'] as $item):?>

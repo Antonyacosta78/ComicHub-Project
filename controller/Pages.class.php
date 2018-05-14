@@ -36,7 +36,9 @@ class Pages extends Controller{
             $icon       = $this->filter('icon');
             $url        = preg_replace('/\s+/', '-', $title)."Page";
             
-            file_put_contents($url.".php",$content,LOCK_EX);
+            $file = fopen("view/templates/default/custompages/$url.php","w");
+            fwrite($file,$content);
+            fclose($file);
             
             $jsonFile = file_get_contents("view/custompages.json");
             
@@ -46,14 +48,14 @@ class Pages extends Controller{
                 "url"   =>$url,
                 "icon"  =>$icon
              ];
-            $jsonFile = json_enconde($jsonData);
+            $jsonFile = json_encode($jsonData);
             
-            file_put_contents("view/custompages.json",$jsonData);
+            file_put_contents("view/custompages.json",$jsonFile);
         }
         $this->view->load('header');
         $this->view->load('nav');
         $this->view->load('loginModal',$this->exceptionHandler);
-        $this->view->load("pageadd",$data);
+        $this->view->load("pageadd");
         $this->view->load('footer');
     }
 }

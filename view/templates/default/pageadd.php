@@ -23,7 +23,7 @@
             <div class="form-group">
                 <label for="iconInput">Ícone</label>
                 <input class="form-control" id="iconInput" type="text" name="icon" aria-describedby="iconHelp"
-                       placeholder="fa fa-accessible-icon">
+                       placeholder="fa-accessible-icon">
                 <small id="iconHelp" class="form-text text-muted">O ícone tem que vir do font-awesome, tira o s do fas</small>
             </div>
 

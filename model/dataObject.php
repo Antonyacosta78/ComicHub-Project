@@ -9,7 +9,15 @@ class dataObject{
 		}
 	}
 	
-	public function get($item){
+	public function __get($item){
+		return $this->dados[$item];
+	}
+	
+	public function __set($item,$valor){
+		$this->dados[$item] = $valor;
+	}
+        
+        public function get($item){
 		return $this->dados[$item];
 	}
 	
