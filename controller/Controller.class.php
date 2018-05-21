@@ -31,17 +31,25 @@ class Controller {
 
     function doLogin(){
         if($this->filter("login")){
-            $username = $this->filter("username");
-            $password = $this->filter("password");
+            $username   = $this->filter("username");
+            $password   = $this->filter("password");
+            $n1         = $this->filter("n1");
+            $n2         = $this->filter("n2");
+            $captcha    = $this->filter("captcha");
             $cookie = ($this->filter("keepMeLogged")) ? true : false;
-            $user = new dataObject(['username'  =>$username,
+            if($captcha == $n1+$n2){
+                $user = new dataObject(['username'  =>$username,
                                     'password'  =>$password, 
                                     'cookie'    =>$cookie
                                    ]);
             
-            $exception = $this->login->doLogin($user);
-            if($exception instanceof Exception){
-                $this->exceptionHandler = $exception;
+                $exception = $this->login->doLogin($user);
+                if($exception instanceof Exception){
+                    $this->exceptionHandler = $exception;
+                }
+            }
+            else{
+                $this->exceptionHandler = new Exception("Captcha Incorreto");
             }
         }
     }

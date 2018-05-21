@@ -30,6 +30,17 @@ $(document).ready(function(){
                 <div class="form-group">
                   <input class="form-control" placeholder="Senha" type="password" name="password" id="passwordInput">
                 </div>
+                <div class="form-group row">
+                    <div class='col-4'>
+                        <label for="captchaInput" class="text-center">Captcha</label>
+                    </div>
+                    <div class='col-8'>
+                        <input type="hidden" name="n1" value="<?php $n1 = rand(1,100); echo $n1;?>">
+                        <input type="hidden" name="n2" value="<?php $n2 = rand(1,100); echo $n2;?>">                        
+                               
+                        <input class="form-control" placeholder="<?php echo $n1." + ".$n2; ?>" type="number" name="captcha" id="captchaInput">
+                    </div>
+                </div>
                 <div class="form-check">
                    <input class="form-check-input" type="checkbox" name="keepMeLogged">
                    <label class="form-check-label">Manter-me logado</label>
