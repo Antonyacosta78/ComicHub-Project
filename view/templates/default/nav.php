@@ -6,7 +6,7 @@
         <?php if(isset($_SESSION['user'])):?>
         <a href="<?php echo $this->base_url; ?>Profile">
             <div id="div-img-user">
-                <img class="img-fluid" id="img-user" src="<?php echo $_SESSION['user']['Userimg'];?>" alt="Foto de <?php echo $_SESSION['user']['Username']; ?>" title="Meu Perfil">
+                <img class="img-fluid" id="img-user" src="<?php echo "userContent/".$_SESSION['user']['Userimg'];?>" alt="Foto de <?php echo $_SESSION['user']['Username']; ?>" title="Meu Perfil">
             </div>
         </a>
         <?php endif;?>
