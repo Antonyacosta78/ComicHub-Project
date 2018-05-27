@@ -35,8 +35,8 @@ $(document).ready(function(){
                         <label for="captchaInput" class="text-center">Captcha</label>
                     </div>
                     <div class='col-8'>
-                        <input type="hidden" name="n1" value="<?php $n1 = rand(1,100); echo $n1;?>">
-                        <input type="hidden" name="n2" value="<?php $n2 = rand(1,100); echo $n2;?>">                        
+                        <input type="hidden" name="n1" value="<?php $n1 = rand(1,20); echo $n1;?>">
+                        <input type="hidden" name="n2" value="<?php $n2 = rand(1,20); echo $n2;?>">                        
                                
                         <input class="form-control" placeholder="<?php echo $n1." + ".$n2; ?>" type="number" name="captcha" id="captchaInput">
                     </div>

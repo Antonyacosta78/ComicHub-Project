@@ -31,14 +31,16 @@ class RecoverPassword extends Controller{
                 "pass"=>md5($password), //pass is password in database, written like this in array because of how updateUser method works
                 "username"=>$user->get("Username")
                 ];
-                var_dump($updateData);
                 
                   
-                $this->model->updateUser($updateData);
+                $verification = $this->model->updateUser($updateData);
+                if($verification){
                 //do the mailer shit
                 echo "Senha nova: ".$password;
                 echo "<br><br><a href='".$this->config->base_url."'>Voltar ao inicio</a>";
-                
+                }else{
+                    echo "Error ao atualizar";
+                }
                 //end the mailer shit
                 die();
                 
