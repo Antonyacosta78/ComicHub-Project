@@ -4,10 +4,10 @@
             <p class="text-center">Uma grande promessa em termos de rpg online se torna um pesadelo para o jovem estudante Shiiro Ikarasu.</p>
             <h4 class="text-center">Páginas: 5</h4>
             <h4 class="text-center">Score dos usuários:
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half"></i>
+                <i style="color:yellow" class="fa fa-star"></i>
+                <i style="color:yellow" class="fa fa-star"></i>
+                <i style="color:yellow" class="fa fa-star"></i>
+                <i style="color:yellow" class="fa fa-star-half"></i>
             </h4>
             <br/>
             <h5 class="text-center">Páginas de 1 a 5</h5>
