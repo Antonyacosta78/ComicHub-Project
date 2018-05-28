@@ -4,7 +4,8 @@
         </a>
         <span class="left-content">
         <?php if(isset($_SESSION['user'])):?>
-        <a href="<?php echo $this->base_url; ?>Profile">
+        <a href="<?php echo $this->base_url; ?>user/userprofile">
+            
             <div id="div-img-user">
                 <img class="img-fluid" id="img-user" src="<?php echo "userContent/".$_SESSION['user']['Userimg'];?>" alt="Foto de <?php echo $_SESSION['user']['Username']; ?>" title="Meu Perfil">
             </div>
@@ -27,9 +28,9 @@
             <ul class="sidebar-nav">
                 <br>
                 <li>
-                    <div class="btn-menu" title="Pesquisar Comics"><a href="pesquisacomics.html"><i class="fa fa-search"></i></a></div>
+                    <div class="btn-menu" title="Pesquisar Comics"><a href="<?php echo $this->base_url?>comics/searchcomics"><i class="fa fa-search"></i></a></div>
                 </li>
-                
+                <?php if(isset($_SESSION['user'])):?>
                 <li>
                     <div class="btn-menu" title="Minhas Comics"><a href="minhascomics.html"><i class="fa fa-address-book"></i></a></div>
                 </li>
@@ -37,6 +38,7 @@
                 <li>
                     <div class="btn-menu" title="Listas de Leitura"><a href="comicsfavoritas.html"><i class="fa fa-bookmark"></i></a></div>
                 </li>
+                <?php endif;?>
                 <br>
                 <hr style="background-color: #999999; width: 80%; margin: 0 5px;">
                 <br>
