@@ -7,7 +7,7 @@
         <a href="<?php echo $this->base_url; ?>user/userprofile">
             
             <div id="div-img-user">
-                <img class="img-fluid" id="img-user" src="<?php echo "userContent/".$_SESSION['user']['Userimg'];?>" alt="Foto de <?php echo $_SESSION['user']['Username']; ?>" title="Meu Perfil">
+                <img class="img-fluid" id="img-user" src="<?php echo $this->base_url."userContent/".$_SESSION['user']['Userimg'];?>" alt="Foto de <?php echo $_SESSION['user']['Username']; ?>" title="Meu Perfil">
             </div>
         </a>
         <?php endif;?>
@@ -37,6 +37,13 @@
                 
                 <li>
                     <div class="btn-menu" title="Listas de Leitura"><a href="comicsfavoritas.html"><i class="fa fa-bookmark"></i></a></div>
+                </li>
+                <li>
+                    <div class="btn-menu">
+                        <a href="<?php echo $this->base_url;?>Home/logout">
+                            <i class="fa fa-sign-out"></i>
+                        </a>
+                    </div>
                 </li>
                 <?php endif;?>
                 <br>
