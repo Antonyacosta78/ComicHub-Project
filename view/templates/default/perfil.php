@@ -1,33 +1,28 @@
-<div class="container">
-	<br/>
-	<br/>
-        <h1 class="text-center">Pesquisar Comics</h1>
-		<br/>
-        <form method="POST" enctype="multipart/form-data">
-              <div class="form-group">
-                  <div class="input-group">
-                  
-                <input class="form-control" placeholder="Título..." type="text" name="comicTitle" id="comicTitleInput">
-                <div class="input-group-append">
-                <span class="input-group-text"><input type="checkbox" name="comicNsfw" value="1" id="comicNsfwInput"></span>
-                <span class="input-group-text">
-                  NSFW
-                </span>
-				<span class="input-group-text">
-                  <button class="btn-menu"><i class="fa fa-search"></i></button>
-                </span>
-              </div>
-              </div>
-              </div>
-           
-         </form>
-     
-        
-        
-    
-    <!-- /.container -->
-	<br/>
-	<div class="row"><h2>Enquanto ainda não pesquisou, confira essas comics populares...</h2></div><br/>
+<!-- Heading Row -->
+      <div class="row my-4">
+        <div class="col-lg-4">
+          <img class="img-fluid rounded" src="../userContent/default.png" alt="">
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-8">
+            <h1>User123</h1>
+            </div>
+            <div class="col-lg-4">
+                <button class="btn btn-primary btn-lg active">Ver todas comics</button>
+            </div>
+          </div>
+            <h3>Nome: João Bastos Ferreira</h3>
+            <h3>Idade:19</h3>
+            <h3>Gênero:Masculino</h3>
+            <h3>Gostos:Escrever, Desenhar, Pintar</h3>
+            <h3>Páis: Brazil</h3>
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+      <!-- /.row -->
+	<div class="row"><br/><br/><h3>Últimas comics por User123:</h3></div>
       <!-- Content Row -->
       <div class="row">
         <div class="col-md-3 mb-3">
@@ -97,4 +92,5 @@
         
       </div>
       <!-- /.row -->
-	  </div>
+     
+

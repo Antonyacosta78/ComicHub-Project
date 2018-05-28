@@ -27,7 +27,7 @@
             <ul class="sidebar-nav">
                 <br>
                 <li>
-                    <div class="btn-menu" title="Pesquisar Comics"><a href="pesquisacomics.html"><i class="fa fa-search"></i></a></div>
+                    <div class="btn-menu" title="Pesquisar Comics"><a href="<?php echo $this->base_url?>comics/searchcomics"><i class="fa fa-search"></i></a></div>
                 </li>
                 
                 <li>
