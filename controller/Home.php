@@ -17,6 +17,7 @@ class Home extends Controller{
     
     public function logout(){
         $this->login->logout();
+       
         $this->view->load('header');
         $this->view->load('nav');
         $this->view->load('loginModal',$this->exceptionHandler);
