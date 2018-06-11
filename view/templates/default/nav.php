@@ -17,7 +17,7 @@
             <a style="color: #999999;" role="button" data-toggle="modal" data-target="#loginModal" class="text-right"><i class="fa fa-sign-in"></i></a>&nbsp;
         </div>
         <div class="btn-menu-top">
-            <a style="color: #999999;" href="<?php echo $this->base_url; ?>Register" title="Registrar-se" class="text-right"><i class="fa fa-user-plus"></i></a>
+            <a style="color: #999999;" href="<?php echo $this->base_url; ?>user/Register" title="Registrar-se" class="text-right"><i class="fa fa-user-plus"></i></a>
         </div>
         <?php endif;?>
         </span>            
@@ -40,7 +40,7 @@
                 </li>
                 <li>
                     <div class="btn-menu">
-                        <a href="<?php echo $this->base_url;?>Home/logout">
+                        <a href="<?php echo $this->base_url;?>user/logout">
                             <i class="fa fa-sign-out"></i>
                         </a>
                     </div>

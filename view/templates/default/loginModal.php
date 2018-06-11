@@ -45,7 +45,7 @@ $(document).ready(function(){
                    <input class="form-check-input" type="checkbox" name="keepMeLogged">
                    <label class="form-check-label">Manter-me logado</label>
                 </div>
-               <a href="<?php echo $this->base_url; ?>RecoverPassword">Esquesceu a senha?</a>
+               <a href="<?php echo $this->base_url; ?>user/RecoverPassword">Esquesceu a senha?</a>
            </div>  
            <div class="modal-footer">
                   <input class="btn btn-primary" type="submit" name="login" value="Logar">
