@@ -15,13 +15,3 @@ $config->dbname ='comichub';//nomedoaluno
 $config->dbhost = '127.0.0.1';
 $config->dbdrive = 'mysql';
 
-
-
-
-
-
-
-
-
-
-

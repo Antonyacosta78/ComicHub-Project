@@ -6,8 +6,6 @@ class Home extends Controller{
     }
 
     public function index(){
-        /*o objeto do tipo exception é passado no array 
-        data com o index "exception" */
         $data = array();
        
         $this->view->load('header');
@@ -17,5 +15,14 @@ class Home extends Controller{
         $this->view->load('footer');
     }
     
+    public function logout(){
+        $this->login->logout();
+       
+        $this->view->load('header');
+        $this->view->load('nav');
+        $this->view->load('loginModal',$this->exceptionHandler);
+        $this->view->load('loggedOut');
+        $this->view->load('footer');
+    }
 
 }
