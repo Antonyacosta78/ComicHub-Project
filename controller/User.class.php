@@ -45,11 +45,13 @@ class User extends Controller{
                 }
                
                 if($_FILES["userimg"]["error"]==0){
-                    if($_FILES["userimg"]["type"]!== "image/png" || $_FILES["userimg"]["type"]!== "image/jpeg" || $_FILES["userimg"]["type"]!== "image/gif"){
-                        $this->exceptionHandler = Message::NO_VALID_IMAGE_FORMAT;
-                    }else{
+                    var_dump($_FILES["userimg"]["type"]);
+                    if($_FILES["userimg"]["type"] == "image/png" || $_FILES["userimg"]["type"] == "image/jpeg" || $_FILES["userimg"]["type"] == "image/gif"){
                         $extension = explode(".",$_FILES['userimg']['name']);
                         $_FILES['userimg']['name'] = "profile.".$extension[1];
+                        $dados["userimg"] = "profile.".$extension[1];
+                    }else{
+                         $this->exceptionHandler = Message::NO_VALID_IMAGE_FORMAT;
                     }
                 }elseif($_FILES["userimg"]["error"]==4){
                         $dados["userimg"] = "profile.png";

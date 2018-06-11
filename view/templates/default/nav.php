@@ -4,10 +4,10 @@
         </a>
         <span class="left-content">
         <?php if(isset($_SESSION['user'])):?>
-        <a href="<?php echo $this->base_url; ?>user/userprofile">
+        <a href="<?php echo $this->base_url; ?>User/profile">
             
             <div id="div-img-user">
-                <img class="img-fluid" id="img-user" src="<?php echo $this->base_url."userContent/".$_SESSION['user']['Userimg'];?>" alt="Foto de <?php echo $_SESSION['user']['Username']; ?>" title="Meu Perfil">
+                <img class="img-fluid" id="img-user" src="<?php echo $this->base_url."userContent/".$_SESSION['user']['ID']."/".$_SESSION['user']['Userimg'];?>" alt="Foto de <?php echo $_SESSION['user']['Username']; ?>" title="Meu Perfil">
             </div>
         </a>
         <?php endif;?>
@@ -17,7 +17,7 @@
             <a style="color: #999999;" role="button" data-toggle="modal" data-target="#loginModal" class="text-right"><i class="fa fa-sign-in"></i></a>&nbsp;
         </div>
         <div class="btn-menu-top">
-            <a style="color: #999999;" href="<?php echo $this->base_url; ?>user/Register" title="Registrar-se" class="text-right"><i class="fa fa-user-plus"></i></a>
+            <a style="color: #999999;" href="<?php echo $this->base_url; ?>User/register" title="Registrar-se" class="text-right"><i class="fa fa-user-plus"></i></a>
         </div>
         <?php endif;?>
         </span>            
@@ -28,7 +28,7 @@
             <ul class="sidebar-nav">
                 <br>
                 <li>
-                    <div class="btn-menu" title="Pesquisar Comics"><a href="<?php echo $this->base_url?>comics/searchcomics"><i class="fa fa-search"></i></a></div>
+                    <div class="btn-menu" title="Pesquisar Comics"><a href="<?php echo $this->base_url?>Comics/search"><i class="fa fa-search"></i></a></div>
                 </li>
                 <?php if(isset($_SESSION['user'])):?>
                 <li>
