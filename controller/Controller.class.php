@@ -26,10 +26,10 @@ class Controller {
         $this->config = $config;
         $this->view = new View();
         $this->login = new Login();
-        $this->doLogin();
+        $this->verifySession();
     }
 
-    function doLogin(){
+    function verifySession(){
         if($this->filter("login")){
             $username   = $this->filter("username");
             $password   = $this->filter("password");
@@ -51,8 +51,11 @@ class Controller {
             else{
                 $this->exceptionHandler = new Exception("Captcha Incorreto");
             }
+        }elseif(filter_input(INPUT_GET,"logout")){
+            $this->login->logout();
         }
     }
+    
     
     public function route($query = null) {
         $class = null;
