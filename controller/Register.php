@@ -41,55 +41,53 @@ class Register extends Controller{
             
             $is_empty = [];
             
-           foreach($dados as $field=>$value){
-               if(!$value){
-                   $is_empty[] = $field;
-               }
-           }
-           
-           if(!$is_empty){//if nothing is empty, we can keep processing data
-               if($dados["password"]!==$dados["passwordRepeat"]){
-                   $this->exceptionHandler = Message::NO_MATCH_PASSWORD;
-               }
-               
-               if(!$this->model->verifyUsername($dados["username"])){
-                   $this->exceptionHandler = Message::USERNAME_EXISTS;
-               }
-               
-               if($_FILES["userimg"]["error"]==0){
-                   if($_FILES["userimg"]["type"]!== "image/png" || $_FILES["userimg"]["type"]!== "image/jpeg" || $_FILES["userimg"]["type"]!== "image/gif"){
-                       $this->exceptionHandler = Message::NO_VALID_IMAGE_FORMAT;
-                   }else{
-                       $extension = explode(".",$_FILES['userimg']['name']);
-                       $_FILES['userimg']['name'] = "profile.".$extension[1];
-                   }
-               }elseif($_FILES["userimg"]["error"]==4){
-                   $dados["userimg"] = "default.png";
-               }
-               
-               $return = ($this->exceptionHandler) ? false : true;
-               
-           }else{
-               $this->exceptionHandler = Message::EMPTY_FIELDS;
-               foreach($is_empty as $field){
-                   $this->exceptionHandler.=$field;
+            foreach($dados as $field=>$value){
+                if(!$value){
+                    $is_empty[] = $field;
                 }
-           }
+            }
            
-           if($return){
-               $dados['password'] = md5($dados['password']);
-               
-               $id = $this->model->insertUser(new dataObject($dados));
-               if($_FILES["userimg"]["error"]==0){
-                if(!file_exists($id)){
-                    mkdir($id);
+            if(!$is_empty){//if nothing is empty, we can keep processing data
+                if($dados["password"]!==$dados["passwordRepeat"]){
+                    $this->exceptionHandler = Message::NO_MATCH_PASSWORD;
                 }
-                move_uploaded_file($_FILES["userimg"]["tmp_name"],"userContent/".$id."/".$_FILES['userimg']['name']);
-               }
-           }
+               
+                if(!$this->model->verifyUsername($dados["username"])){
+                    $this->exceptionHandler = Message::USERNAME_EXISTS;
+                }
+               
+                if($_FILES["userimg"]["error"]==0){
+                    if($_FILES["userimg"]["type"]!== "image/png" || $_FILES["userimg"]["type"]!== "image/jpeg" || $_FILES["userimg"]["type"]!== "image/gif"){
+                        $this->exceptionHandler = Message::NO_VALID_IMAGE_FORMAT;
+                    }else{
+                        $extension = explode(".",$_FILES['userimg']['name']);
+                        $_FILES['userimg']['name'] = "profile.".$extension[1];
+                    }
+                }elseif($_FILES["userimg"]["error"]==4){
+                        $dados["userimg"] = "profile.png";
+                }
+               
+                $return = ($this->exceptionHandler) ? false : true;
+               
+            }else{
+                $this->exceptionHandler = Message::EMPTY_FIELDS;
+            }
            
-       }
-       return $return;
+            if($return){             
+                $dados['password'] = md5($dados['password']);
+               
+                $id = $this->model->insertUser(new dataObject($dados));
+                if(!file_exists("userContent/".$id)){
+                    mkdir("userContent/".$id);   
+                }
+                if($_FILES["userimg"]["error"]==0){
+                    move_uploaded_file($_FILES["userimg"]["tmp_name"],"userContent/".$id."/".$_FILES['userimg']['name']);
+                }elseif($_FILES["userimg"]["error"]==4){
+                    copy("userContent/default.png","userContent/".$id."/profile.png");
+                }
+            }
+        }
+        return $return;
     }
     
     

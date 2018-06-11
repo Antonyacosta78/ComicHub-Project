@@ -5,7 +5,7 @@ class Comics extends Controller{
         parent::__construct();      
     }
 
-    public function searchComics(){
+    public function search(){
        
         $data[]="";//por enquanto
         
@@ -15,7 +15,7 @@ class Comics extends Controller{
         $this->view->load('footer');
     }
     
-    public function viewComic(){
+    public function view(){
        
         $data[]="";//por enquanto
         
@@ -25,13 +25,13 @@ class Comics extends Controller{
         $this->view->load('footer');
     }
     
-    public function comicPage(){
+    public function read(){
        
         $data[]="";//por enquanto
         
         $this->view->load('header');
         $this->view->load('nav');
-        $this->view->load('verpaginacomic',$data);
+        $this->view->load('readComic',$data);
         $this->view->load('footer');
     }
     

@@ -19,7 +19,7 @@ $(document).ready(function(){
                <?php if($data): ?>
                <div class="card error-msg">
                    <div class="card-body text-center">
-                       <h2><?php echo $data->getMessage(); ?></h2>
+                       <h4><?php echo $data->getMessage(); ?></h4>
                    </div>
                </div>
                <br>
