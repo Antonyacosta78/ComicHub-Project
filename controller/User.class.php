@@ -24,7 +24,8 @@ class User extends Controller{
                 "password"=>$this->filter("password"),
                 "passwordRepeat"=>$this->filter("passwordRepeat"),
                 "email"=>$this->filter("email"),
-                "birthdate"=>$this->filter("birthdate")
+                "birthdate"=>$this->filter("birthdate"),
+                "userimg"=>"profile.jpg"
             ];
             
             $is_empty = [];
@@ -45,13 +46,8 @@ class User extends Controller{
                 }
                
                 if($_FILES["userimg"]["error"]==0){
-                    var_dump($_FILES["userimg"]["type"]);
-                    if($_FILES["userimg"]["type"] == "image/png" || $_FILES["userimg"]["type"] == "image/jpeg" || $_FILES["userimg"]["type"] == "image/gif"){
-                        $extension = explode(".",$_FILES['userimg']['name']);
-                        $_FILES['userimg']['name'] = "profile.".$extension[1];
-                        $dados["userimg"] = "profile.".$extension[1];
-                    }else{
-                         $this->exceptionHandler = Message::NO_VALID_IMAGE_FORMAT;
+                    if(!($_FILES["userimg"]["type"] == "image/png" || $_FILES["userimg"]["type"] == "image/jpeg" || $_FILES["userimg"]["type"] == "image/gif")){
+                       $this->exceptionHandler = Message::NO_VALID_IMAGE_FORMAT;
                     }
                 }elseif($_FILES["userimg"]["error"]==4){
                         $dados["userimg"] = "profile.png";
@@ -71,7 +67,15 @@ class User extends Controller{
                     mkdir("userContent/".$id);   
                 }
                 if($_FILES["userimg"]["error"]==0){
-                    move_uploaded_file($_FILES["userimg"]["tmp_name"],"userContent/".$id."/".$_FILES['userimg']['name']);
+                    $x1 = $this->filter("x");
+                    $y1 = $this->filter("y");
+                    $x2 = $this->filter("x2");
+                    $y2 = $this->filter("y2");
+                    
+                    $imageManipulator = new ImageManipulator($_FILES["userimg"]["tmp_name"]);
+                     print_r($imageManipulator->getWidth()." ".$imageManipulator->getHeight());
+                    $croppedImage = $imageManipulator->crop($x1, $y1, $x2, $y2);
+                    $croppedImage->save("userContent/".$id."/profile.jpg");
                 }elseif($_FILES["userimg"]["error"]==4){
                     copy("userContent/default.png","userContent/".$id."/profile.png");
                 }

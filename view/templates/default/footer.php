@@ -16,8 +16,11 @@
       </div>
       <!-- /.container -->
     </footer>
-   
-    
-  </body>
+    <script type="text/javascript" src="<?php echo $this->asset;?>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo $this->asset;?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo $this->asset; ?>js/jquery.Jcrop.min.js"></script>
+    <script type="text/javascript" src="<?php echo $this->asset;?>js/javascript-crop-image.js"></script>
+
+</body>
 
 </html>
