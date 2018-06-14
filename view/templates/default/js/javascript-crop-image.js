@@ -16,17 +16,20 @@ function showImage(event) {
         setSelect:[ 0, 0, 50, 50 ],
         aspectRatio: 1/1
     });},200);
-    
  
 }
-function showCoords(c)
-{
-	$('#x').val(c.x);
-	$('#y').val(c.y);
-	$('#x2').val(c.x2);
-	$('#y2').val(c.y2);
-	$('#w').val(c.w);
-	$('#h').val(c.h);
+function showCoords(c){
+    var domRect = $(".jcrop-holder")[0].getBoundingClientRect();;
+    $("#bw").val(domRect.width);
+    $("#bh").val(domRect.height);
+    
+    $('#x').val(c.x);
+    $('#y').val(c.y);
+    $('#x2').val(c.x2);
+    $('#y2').val(c.y2);
+    $('#w').val(c.w);
+    $('#h').val(c.h);
+    
 };
 
 
