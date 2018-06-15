@@ -7,17 +7,14 @@
         <div class="col-lg-8">
           <div class="row">
             <div class="col-lg-8">
-            <h1>User123</h1>
+            <h1><?php echo $data['userinfo']->__get("Username")?></h1>
             </div>
             <div class="col-lg-4">
                 <button class="btn btn-primary btn-lg active">Ver todas comics</button>
             </div>
           </div>
-            <h3>Nome: João Bastos Ferreira</h3>
-            <h3>Idade:19</h3>
-            <h3>Gênero:Masculino</h3>
-            <h3>Gostos:Escrever, Desenhar, Pintar</h3>
-            <h3>Páis: Brazil</h3>
+            <h3>Email:<?php echo $data['userinfo']->__get("Email")?></h3>
+            <h3>Data de nascimento:<?php echo $data['userinfo']->__get("Birthdate")?></h3>
         </div>
         <!-- /.col-md-4 -->
       </div>

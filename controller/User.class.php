@@ -6,9 +6,8 @@ class User extends Controller{
         $this->model = new UserModel();
     }
 
-    public function profile(){
-        $data = array();
-       
+    public function profile($username){
+        $data['userinfo'] = $this->model->getUserByUsername($username);
         $this->view->load('header');
         $this->view->load('nav');
         $this->view->load('perfil',$data);
