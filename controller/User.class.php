@@ -67,14 +67,15 @@ class User extends Controller{
                     mkdir("userContent/".$id);   
                 }
                 if($_FILES["userimg"]["error"]==0){
-                    $x1 = $this->filter("x");
-                    $y1 = $this->filter("y");
-                    $x2 = $this->filter("x2");
-                    $y2 = $this->filter("y2");
-                    
+                    $boxWidth = $this->filter('bw');
+                    $boxHeight = $this->filter('bh');
+                    $coords = [$this->filter("x"),$this->filter("y"),$this->filter("x2"),$this->filter("y2")];
+                   
                     $imageManipulator = new ImageManipulator($_FILES["userimg"]["tmp_name"]);
-                     print_r($imageManipulator->getWidth()." ".$imageManipulator->getHeight());
-                    $croppedImage = $imageManipulator->crop($x1, $y1, $x2, $y2);
+                    $widthRatio = $imageManipulator->getWidth()/$boxWidth;
+                    $heightRatio = $imageManipulator->getHeight()/$boxHeight;
+                    
+                    $croppedImage = $imageManipulator->crop($coords);
                     $croppedImage->save("userContent/".$id."/profile.jpg");
                 }elseif($_FILES["userimg"]["error"]==4){
                     copy("userContent/default.png","userContent/".$id."/profile.png");
