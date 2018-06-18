@@ -1,36 +1,61 @@
-<div id="logo" class="navbar navbar-black">
-        <a href="<?php echo $this->base_url; ?>">
-            <img class="img-logo" src="<?php echo $this->asset; ?>img/logo.png">
-        </a>
-        <span class="left-content">
-        <?php if(isset($_SESSION['user'])):?>
-        <a href="<?php echo $this->base_url; ?>User/profile">
-            
-            <div id="div-img-user">
-                <img class="img-fluid" id="img-user" src="<?php echo $this->base_url."userContent/".$_SESSION['user']['ID']."/".$_SESSION['user']['Userimg'];?>" alt="Foto de <?php echo $_SESSION['user']['Username']; ?>" title="Meu Perfil">
-            </div>
-        </a>
-        <?php endif;?>
-        
-        <?php if(!isset($_SESSION['user'])):?>
-        <div class="btn-menu-top">
-            <a style="color: #999999;" role="button" data-toggle="modal" data-target="#loginModal" class="text-right"><i class="fa fa-sign-in"></i></a>&nbsp;
-        </div>
-        <div class="btn-menu-top">
-            <a style="color: #999999;" href="<?php echo $this->base_url; ?>User/register" title="Registrar-se" class="text-right"><i class="fa fa-user-plus"></i></a>
-        </div>
-        <?php endif;?>
-        </span>            
-</div>
-<div id="wrapper" class="toggled">
+<nav class="navbar navbar-expand-lg navbar-black">
+    <a class="navbar-brand" href="<?php echo $this->base_url; ?>">
+        <img class="img-logo" src="<?php echo $this->asset; ?>img/logo.png">
+    </a>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto right-content">
+            <?php if(!isset($_SESSION['user'])):?>
+            <li class="nav-item">
+                <a style="color: #999999;" role="button" data-toggle="modal" data-target="#loginModal" class="text-right">
+                    <div class="btn-menu-top">
+                       <i class="fa fa-sign-in"></i>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a style="color: #999999;" href="<?php echo $this->base_url; ?>User/register" title="Registrar-se" class="text-right">
+                    <div class="btn-menu-top">
+                        <i class="fa fa-user-plus"></i>
+                    </div>
+                </a>
+            </li>
+            &nbsp;
+            <?php endif;?>
+            <li class="nav-item dropdown">
+                <div class="btn-menu-top">
+                <a class="nav-link dropdown-toggle"  style="color: #999999;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-newspaper-o"></i>
+                </a>
+                </div>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                </div>
+            </li>
+            <form class="form-inline">
+                <div class="input-group">
+                <input class="form-control" type="search" placeholder="Pesquisar Comics" aria-label="Search">
+                <div class="input-group-append">
+                  <button class="btn btn-secondary btn-sm" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+                </div>
+                
+            </form>
+        </ul>
+    </div>
+</nav>
+<div id="wrapper" <?php if(isset($_SESSION['user'])):?>class="toggled"<?php endif;?> >
          <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <br>
+            <?php if(isset($_SESSION['user'])):?>
                 <li>
-                    <div class="btn-menu" title="Pesquisar Comics"><a href="<?php echo $this->base_url?>Comics/search"><i class="fa fa-search"></i></a></div>
+                  <a href="<?php echo $this->base_url; ?>User/profile">
+                    <div id="div-img-user">
+                        <img class="img-fluid" id="img-user" src="<?php echo $this->base_url."userContent/".$_SESSION['user']['ID']."/".$_SESSION['user']['Userimg'];?>" alt="Foto de <?php echo $_SESSION['user']['Username']; ?>" title="Meu Perfil">
+                    </div>
+                  </a>
                 </li>
-                <?php if(isset($_SESSION['user'])):?>
                 <li>
                     <div class="btn-menu" title="Minhas Comics"><a href="minhascomics.html"><i class="fa fa-address-book"></i></a></div>
                 </li>

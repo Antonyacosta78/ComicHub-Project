@@ -10,10 +10,15 @@ body {
 
 .navbar-black{
     background-color: black;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
 }
 
-.left-content{
-    justify-content: flex-end;
+.right-content{
+    position: relative;
+    left: 100%;
+    transform: translateX(-100%);
 }
 
 .img-logo{
@@ -93,7 +98,6 @@ footer {
 
 .sidebar-nav {
   position: absolute;
-  top: 20px;
   width: inherit;
   margin: 0;
   padding: 0;
@@ -139,6 +143,7 @@ footer {
 @media(min-width:768px) {
   #wrapper {
     padding-left: 0;
+    padding-top:55px;
   }
   #wrapper.toggled {
     padding-left: 75px;

@@ -17,7 +17,7 @@ function showImage(event) {
         onSelect: showCoords,
         setSelect:[ 0, 0, 50, 50 ],
         aspectRatio: 1/1
-    });},200);
+    });}
  
 }
 function showCoords(c){
