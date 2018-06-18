@@ -11,17 +11,17 @@ function showImage(event) {
     //show img and activate jcrop
 	var uploadedImage = document.getElementById("uploadedImage");
     uploadedImage.style.display = "block";
-	uploadedImage.onload = function(){
-		$('#uploadedImage').Jcrop({
-		onChange: showCoords,
-        onSelect: showCoords,
-        setSelect:[ 0, 0, 50, 50 ],
-        aspectRatio: 1/1
-    });}
- 
+    uploadedImage.onload = function(){
+        $('#uploadedImage').Jcrop({
+            onChange: showCoords,
+            onSelect: showCoords,
+            setSelect:[ 0, 0, 50, 50 ],
+            aspectRatio: 1/1
+        });
+    };
 }
 function showCoords(c){
-    var domRect = $(".jcrop-holder")[0].getBoundingClientRect();;
+    var domRect = $(".jcrop-holder")[0].getBoundingClientRect();
     $("#bw").val(domRect.width);
     $("#bh").val(domRect.height);
     

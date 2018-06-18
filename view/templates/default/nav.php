@@ -22,15 +22,20 @@
             &nbsp;
             <?php endif;?>
             <li class="nav-item dropdown">
-                <div class="btn-menu-top">
-                <a class="nav-link dropdown-toggle"  style="color: #999999;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- gambiarra "temporal" -->
+                <div class="btn-menu-top" style="color: #999999;" onclick="var a = document.getElementById('newsDropdownList'); if(a.style.display==''){a.style.display='block';}else if(a.style.display=='block'){a.style.display='';}" id="newsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-newspaper-o"></i>
-                </a>
                 </div>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu" id="newsDropdownList" aria-labelledby="newsDropdown">
+                    <?php
+                if($data['menu']):
+                    foreach($data['menu'] as $item):?>
+                    <a class="dropdown-item" title="<?php echo $item->title; ?>" href="<?php echo $this->base_url."Pages/load/".$item->url?>"><?php echo $item->title; ?></a>
+                <?php endforeach;
+                endif;
+                ?>
                 </div>
-            </li>
+             </li>
             <form class="form-inline">
                 <div class="input-group">
                 <input class="form-control" type="search" placeholder="Pesquisar Comics" aria-label="Search">
@@ -74,15 +79,7 @@
                 <br>
                 <hr style="background-color: #999999; width: 80%; margin: 0 5px;">
                 <br>
-                <?php
-                if($data['menu']):
-                    foreach($data['menu'] as $item):?>
-                <li>
-                    <div class="btn-menu" title="<?php echo $item->title; ?>"><a href="<?php echo $this->base_url."Pages/load/".$item->url?>"><i class="fa <?php echo $item->icon; ?>"></i></a></div>
-                </li>
-                <?php endforeach;
-                endif;
-                ?>
+                
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
