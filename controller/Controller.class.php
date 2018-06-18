@@ -36,7 +36,7 @@ class Controller {
             $n1         = $this->filter("n1");
             $n2         = $this->filter("n2");
             $captcha    = $this->filter("captcha");
-            $cookie = ($this->filter("keepMeLogged")) ? true : false;
+            $cookie     = $this->filter("keepMeLogged");
             if($captcha == $n1+$n2){
                 $user = new dataObject(['username'  =>$username,
                                     'password'  =>$password, 

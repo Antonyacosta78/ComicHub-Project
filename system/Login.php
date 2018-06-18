@@ -39,7 +39,6 @@ class Login {
     }
     
     public function verifyLogin($user) {
-        //falta definir classe de mensages
         $this->model = new UserModel();
         $this->user = $this->model->getUserByUsername($user->get("username"));
         try{

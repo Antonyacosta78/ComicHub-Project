@@ -70,7 +70,7 @@
                 </li>
                 <li>
                     <div class="btn-menu">
-                        <a href="<?php echo $this->base_url;?>user/logout">
+                        <a href="<?php echo $this->base_url;?>?logout=1">
                             <i class="fa fa-sign-out"></i>
                         </a>
                     </div>
