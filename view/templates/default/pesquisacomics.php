@@ -3,16 +3,14 @@
 	<br/>
         <h1 class="text-center">Pesquisar Comics</h1>
 		<br/>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST">
               <div class="form-group">
                   <div class="input-group">
                   
                 <input class="form-control" placeholder="Título..." type="text" name="comicTitle" id="comicTitleInput">
                 <div class="input-group-append">
-                <span class="input-group-text"><input type="checkbox" name="comicNsfw" value="1" id="comicNsfwInput"></span>
-                <span class="input-group-text">
-                  NSFW
-                </span>
+                <span class="input-group-text"><input type="checkbox" name="comicNsfw" id="comicNsfwInput"> NSFW </span>
+                
 				<span class="input-group-text">
                   <button class="btn-menu"><i class="fa fa-search"></i></button>
                 </span>
