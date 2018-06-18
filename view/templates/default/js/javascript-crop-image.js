@@ -8,18 +8,20 @@ function showImage(event) {
       output.src = dataURL;
     };
     reader.readAsDataURL(input.files[0]);
-    //show modal and activate jcrop
-    document.getElementById("uploadedImage").style.display = "block";
-    setTimeout(function(){$('#uploadedImage').Jcrop({
-	onChange: showCoords,
-        onSelect: showCoords,
-        setSelect:[ 0, 0, 50, 50 ],
-        aspectRatio: 1/1
-    });},200);
- 
+    //show img and activate jcrop
+	var uploadedImage = document.getElementById("uploadedImage");
+    uploadedImage.style.display = "block";
+    uploadedImage.onload = function(){
+        $('#uploadedImage').Jcrop({
+            onChange: showCoords,
+            onSelect: showCoords,
+            setSelect:[ 0, 0, 50, 50 ],
+            aspectRatio: 1/1
+        });
+    };
 }
 function showCoords(c){
-    var domRect = $(".jcrop-holder")[0].getBoundingClientRect();;
+    var domRect = $(".jcrop-holder")[0].getBoundingClientRect();
     $("#bw").val(domRect.width);
     $("#bh").val(domRect.height);
     
@@ -31,5 +33,3 @@ function showCoords(c){
     $('#h').val(c.h);
     
 };
-
-

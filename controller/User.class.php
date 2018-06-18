@@ -103,11 +103,9 @@ class User extends Controller{
             $update = false;
             if($this->filter("update")){
                 $dados = [
-                //"password"=>$this->filter("password"),
-                //"passwordRepeat"=>$this->filter("passwordRepeat"),
+                "username"=>$_SESSION['user']['Username'],    
                 "email"=>$this->filter("email"),
                 "birthdate"=>$this->filter("birthdate")
-                //"userimg"=>"profile.jpg"
             ];
             
             $is_empty = [];
@@ -115,24 +113,26 @@ class User extends Controller{
             foreach($dados as $field=>$value){
                 if(!$value){
                     $is_empty[] = $field;
+                    unset($dados[$field]);
                 }
                 else{
                     if($field=="birthdate"){
                         if($dados['birthdate']==$data['userinfo']->Birthdate){
+                            unset($dados[$field]);
                             $is_empty[] = $field;
                         }
                     }
                 }
             }
             
-            if($is_empty.lenght==2){
+            if(count($is_empty)==2){
                 $data['error']=$this->exceptionHandler = Message::NOTHING_ALTERED;
             }else{
                 $update=true;
             }
             
             if($update){
-                    $this->model->updateUser(new dataObject($dados));
+                    $this->model->updateUser($dados);
                 
             }
                        

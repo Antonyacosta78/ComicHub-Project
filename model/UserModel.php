@@ -61,7 +61,6 @@ class UserModel extends Model{
     }
     
     public function updateUser($user){
-        // $user = ['pass'=>'asjkdfyaskd']
         $parameters =[];
         $sql ='UPDATE user SET ';
         
@@ -75,9 +74,9 @@ class UserModel extends Model{
         $len = strlen($sql)-1;
         $sql = substr($sql,0,$len);
         $sql.= " WHERE username =:username";
-        echo "<pre>";
-        var_dump($sql);
-        echo "</pre>";
+//        echo "<pre>";
+//        var_dump($sql);
+//        echo "</pre>";
         $return = $this->ExecuteCommand($sql,$parameters);
         return $return;      
           
