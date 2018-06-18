@@ -8,12 +8,10 @@ function showImage(event) {
       output.src = dataURL;
     };
     reader.readAsDataURL(input.files[0]);
-    //show img and activate jcrop
-	var uploadedImage = document.getElementById("uploadedImage");
-    uploadedImage.style.display = "block";
-	uploadedImage.onload = function(){
-		$('#uploadedImage').Jcrop({
-		onChange: showCoords,
+    //show modal and activate jcrop
+    document.getElementById("uploadedImage").style.display = "block";
+    setTimeout(function(){$('#uploadedImage').Jcrop({
+	onChange: showCoords,
         onSelect: showCoords,
         setSelect:[ 0, 0, 50, 50 ],
         aspectRatio: 1/1

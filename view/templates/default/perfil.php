@@ -1,20 +1,23 @@
 <!-- Heading Row -->
       <div class="row my-4">
         <div class="col-lg-4">
-          <img class="img-fluid rounded" src="../userContent/default.png" alt="">
+          <img class="img-fluid rounded" 
+          src="<?php echo $this->base_url."userContent/".$data['userinfo']->ID."/".$data['userinfo']->Userimg?>" alt="">
         </div>
         <!-- /.col-lg-8 -->
         <div class="col-lg-8">
           <div class="row">
             <div class="col-lg-8">
-            <h1><?php echo $data['userinfo']->__get("Username")?></h1>
+            <h1><?php echo $data['userinfo']->Username?></h1>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <button class="btn btn-primary btn-lg active">Ver todas comics</button>
             </div>
           </div>
-            <h3>Email:<?php echo $data['userinfo']->__get("Email")?></h3>
-            <h3>Data de nascimento:<?php echo $data['userinfo']->__get("Birthdate")?></h3>
+            <h3>Email:<?php echo $data['userinfo']->Email?></h3>
+            <h3>Data de nascimento:<?php echo $data['userinfo']->Birthdate?></h3>
+            <button class="btn btn-success btn-lg active"><i class="fa fa-edit"></i>Editar perfil</button>
+            <button class="btn btn-success btn-lg active"><i class="fa fa-edit"></i>Editar Preferências</button>
         </div>
         <!-- /.col-md-4 -->
       </div>

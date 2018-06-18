@@ -96,6 +96,59 @@ class User extends Controller{
         
     }
     
+    public function editProfile(){
+        if(isset($_SESSION['user'])){
+            $data['error']="";
+            $data['userinfo']=$this->model->getUserByUsername($_SESSION['user']['Username']);
+            $update = false;
+            if($this->filter("update")){
+                $dados = [
+                //"password"=>$this->filter("password"),
+                //"passwordRepeat"=>$this->filter("passwordRepeat"),
+                "email"=>$this->filter("email"),
+                "birthdate"=>$this->filter("birthdate")
+                //"userimg"=>"profile.jpg"
+            ];
+            
+            $is_empty = [];
+            
+            foreach($dados as $field=>$value){
+                if(!$value){
+                    $is_empty[] = $field;
+                }
+                else{
+                    if($field=="birthdate"){
+                        if($dados['birthdate']==$data['userinfo']->Birthdate){
+                            $is_empty[] = $field;
+                        }
+                    }
+                }
+            }
+            
+            if($is_empty.lenght==2){
+                $data['error']=$this->exceptionHandler = Message::NOTHING_ALTERED;
+            }else{
+                $update=true;
+            }
+            
+            if($update){
+                    $this->model->updateUser(new dataObject($dados));
+                
+            }
+                       
+            }
+                
+            $this->view->load('header');
+            $this->view->load('nav');
+            $this->view->load('editarperfil',$data);
+            $this->view->load('footer'); 
+            
+        }
+        else{
+            echo "<h1>Vai zoar o site da sua avó ou logar fdp</h1>";
+        }
+    }
+    
     public function recoverPassword(){
         if($this->filter("recoverPassword")){
             $email = $this->filter("email");
