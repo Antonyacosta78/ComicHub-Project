@@ -8,8 +8,10 @@ class Comics extends Controller{
 
     public function search($text = null){
         $data = [];
+        $text = (!$text && isset(filter_input(INPUT_GET,"t"))) ? filter_input(INPUT_GET,"t") : $text;
         if($text){
-            $data['comics']=$this->model->searchComics($text);//por enquanto
+            $data['text']=$text; 
+            $data['comics']=$this->model->searchComics($text);
         }
         $this->view->load('header');
         $this->view->load('nav');
