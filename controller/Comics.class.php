@@ -8,14 +8,24 @@ class Comics extends Controller{
 
     public function search($text = null){
         $data = [];
-        $text = (!$text && isset(filter_input(INPUT_GET,"t"))) ? filter_input(INPUT_GET,"t") : $text;
-        if($text){
-            $data['text']=$text; 
-            $data['comics']=$this->model->searchComics($text);
-        }
+        //$text = (!$text && isset(filter_input(INPUT_GET,"t"))) ? filter_input(INPUT_GET,"t") : $text;
+        //if($text){
+        //    $data['text']=$text; 
+        //    $data['comics']=$this->model->searchComics($text);
+        //}
         $this->view->load('header');
         $this->view->load('nav');
         $this->view->load('pesquisacomics',$data);
+        $this->view->load('footer');
+    }
+    
+    public function insertComic(){
+       
+        $data=[];//por enquanto
+        
+        $this->view->load('header');
+        $this->view->load('nav');
+        $this->view->load('inserircomic',$data);
         $this->view->load('footer');
     }
     
