@@ -16,8 +16,14 @@
           </div>
             <h3>Email:<?php echo $data['userinfo']->Email?></h3>
             <h3>Data de nascimento:<?php echo $data['userinfo']->Birthdate?></h3>
-            <button class="btn btn-success btn-lg active"><i class="fa fa-edit"></i>Editar perfil</button>
-            <button class="btn btn-success btn-lg active"><i class="fa fa-edit"></i>Editar Preferências</button>
+            <?php if($_SESSION['user']['Username']==$data['userinfo']->Username):?>
+            <a href="<?php echo $this->base_url."User/editprofile"?>" style="text-decoration:none">
+                <button class="btn btn-success btn-lg active"><i class="fa fa-edit"></i>Editar perfil</button>
+            </a> 
+            <a href="<?php echo $this->base_url."User/editpreferences"?>" style="text-decoration:none">
+                <button class="btn btn-success btn-lg active"><i class="fa fa-edit"></i>Editar Preferências</button>
+            </a>
+            <?php endif; ?>
         </div>
         <!-- /.col-md-4 -->
       </div>
