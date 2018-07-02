@@ -6,7 +6,10 @@ class User extends Controller{
         $this->model = new UserModel();
     }
 
-    public function profile($username){
+    public function profile($username=null){
+        if(!$username && isset($_SESSION['user'])){
+            $username=$_SESSION['user']['Username'];
+        }
         $data['userinfo'] = $this->model->getUserByUsername($username);
         $this->view->load('header');
         $this->view->load('nav');
@@ -94,6 +97,113 @@ class User extends Controller{
             $this->view->load('footer');
         }
         
+    }
+    
+    public function editProfile(){
+        if(isset($_SESSION['user'])){
+            $data['error']="";
+            $data['userinfo']=$this->model->getUserByUsername($_SESSION['user']['Username']);
+            $update = false;
+            if($this->filter("update")){
+                $dados = [
+                "username"=>$_SESSION['user']['Username'],    
+                "email"=>$this->filter("email"),
+                "birthdate"=>$this->filter("birthdate")
+            ];
+            
+            $is_empty = [];
+            
+            foreach($dados as $field=>$value){
+                if(!$value){
+                    $is_empty[] = $field;
+                    unset($dados[$field]);
+                }
+                else{
+                    if($field=="birthdate"){
+                        if($dados['birthdate']==$data['userinfo']->Birthdate){
+                            unset($dados[$field]);
+                            $is_empty[] = $field;
+                        }
+                    }
+                }
+            }
+            
+            if(count($is_empty)==2){
+                $data['error']=$this->exceptionHandler = Message::NOTHING_ALTERED;
+            }else{
+                $update=true;
+            }
+            
+            if($update){
+                    $this->model->updateUser($dados);
+                
+            }
+                       
+            }
+                
+            $this->view->load('header');
+            $this->view->load('nav');
+            if(!$update){
+                $this->view->load('editarperfil',$data);
+            }else{
+                $this->view->load('updateOK');
+            }
+            $this->view->load('footer'); 
+            
+        }
+        else{
+            echo "<h1>Vai zoar o site da sua avó ou logar fdp</h1>";
+        }
+    }
+    
+    public function editPreferences(){
+        if(isset($_SESSION['user'])){
+            $data['error']="";
+            $data['userinfo']=$this->model->getUserByUsername($_SESSION['user']['Username']);
+            $update = false;
+            if($this->filter("update")){
+                $dados = [
+                "userid"=>$data['userinfo']->ID,    
+                "NSFWOnFeed"=>$this->filter("feed"),
+                "NSFWOnSearch"=>$this->filter("search")
+            ];
+            
+            $is_empty = [];
+            
+            foreach($dados as $field=>$value){
+                if($field!='userid'
+                        && $dados[$field]==$data['userinfo']->$field){
+                    $is_empty[] = $field;
+                    unset($dados[$field]);
+                }
+            }
+            
+            if(count($is_empty)==2){
+                $data['error']=$this->exceptionHandler = Message::NOTHING_ALTERED;
+            }else{
+                $update=true;
+            }
+            
+            if($update){
+                    $this->model->updateUserSettings($dados);
+                
+            }
+                       
+            }
+                
+            $this->view->load('header');
+            $this->view->load('nav');
+            if(!$update){
+                $this->view->load('editarpreferencias',$data);
+            }else{
+                $this->view->load('updateOK');
+            }
+            $this->view->load('footer'); 
+            
+        }
+        else{
+            echo "<h1>Vai zoar o site da sua avó ou logar fdp</h1>";
+        }
     }
     
     public function recoverPassword(){

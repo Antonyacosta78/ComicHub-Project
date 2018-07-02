@@ -1,3 +1,4 @@
+
 function showImage(event) {
     var input = event.target;
 
@@ -33,5 +34,3 @@ function showCoords(c){
     $('#h').val(c.h);
     
 };
-
-
