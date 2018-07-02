@@ -48,7 +48,6 @@ class Model {
                     $preparedStatment->bindValue($key, $value);
                 }
             }
-
             if ($preparedStatment->execute() == FALSE) {
                 throw new PDOException($preparedStatment->errorCode());
             }

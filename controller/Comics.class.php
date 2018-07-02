@@ -8,7 +8,7 @@ class Comics extends Controller{
 
     public function search($text = null){
         $data = [];
-        $text = (!$text && isset(filter_input(INPUT_GET,"t"))) ? filter_input(INPUT_GET,"t") : $text;
+        $text = (!$text && null!==filter_input(INPUT_POST,"t")) ? filter_input(INPUT_POST,"t") : $text;
         if($text){
             $data['text']=$text; 
             $data['comics']=$this->model->searchComics($text);

@@ -1,11 +1,11 @@
 <div class="container">
     <h2 class="text-center">Pesquisa de comics</h2>
-    <form method="GET">
+    <form method="POST">
         <div class="form-group">
             <input type="text" value="<?php echo (isset($data['text'])) ? $data['text'] : "";?>" name="t" placeholder="Pesquisar...">
         </div>
     </form>
-    <br>
+    <br>    
     <?php if(isset($data['comics'])):?>
         <?php if(!$data['comics']):?>
             <h3 class="text-muted">Nenhum comic achado</h3>
