@@ -27,4 +27,18 @@ class ComicModel extends Model{
         }
         return $array;
     }
+    
+    public function getFeed(){
+        $sql = "SELECT * FROM comic ORDER BY ID DESC LIMIT 13";
+        $return = $this->ExecuteQuery($sql,null);
+        if(is_array($return)){
+            $array['header'] = $return[0];
+            unset($return[0]);
+            foreach($return as $row){
+                $array['content'][] = new dataObject($row);
+            }
+        }    
+            
+    }
+    
 }

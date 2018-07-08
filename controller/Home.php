@@ -2,11 +2,12 @@
 class Home extends Controller{
 
     public function __construct() {
-        parent::__construct();      
+        parent::__construct();     
+        $this->model = new ComicModel();
     }
 
     public function index(){
-        $data = array();
+        $data = $this->model->getFeed();
        
         $this->view->load('header');
         $this->view->load('nav');
