@@ -34,15 +34,18 @@
                 <label for="emailInput">Counteúdo impróprio</label>
                 <input type="checkbox" id="ageInput" name="age" aria-describedby="ageHelp">
                 <small id="ageHelp" class="form-text text-muted">
-                Essa comic contém conetúdo considerado inadequado paramanores?</small>
+                Essa comic contém conetúdo considerado inadequado para menores?</small>
             </div>
             <div class="form-group">
-                <label for="imgInput">Escolha as páginas</label>
-                <div id="imgButtons">
+                <label for="imgInput">Adicione páginas e capítulos</label>
+                <div id="comicStructure">
+                    <input class="form-control" id="chapterInput-1" name="chapter1" type="text"
+                       placeholder="Digite o nome do capítulo...">
                     <input class="form-control-file" type="file" name="img-0" id="imgInput-0" aria-describedby="imgHelp">
                 </div>
                 <br/>
-                <button type="button" class="btn btn-primary botao" id="botao-1"><i class="fa fa-plus"></i>Adicionar página</button> 
+                <button type="button" class="btn btn-primary" id="addChapter"><i class="fa fa-plus"></i>Adicionar capítulo</button>
+                <button type="button" class="btn btn-primary" id="addPage"><i class="fa fa-plus"></i>Adicionar página</button> 
                 <small id="imgHelp" class="form-text text-muted">Só imagens em formato .jpg, .png ou .gif</small>
             </div>
             <div class="form-check">
@@ -57,13 +60,18 @@
 <script type="text/javascript">
 $(document).ready(function(){
     var vez=0;
-     $('body').on('click','.botao',function (){
-        var sep = $(this).attr('id').split('-');
-        var botao = sep[1];
+    var chapter=0;
+     $('body').on('click','#addPage',function (){
         vez++;
-        $('#imgButtons').append(
+        $('#comicStructure').append(
         "<input class='form-control-file' type='file' name='img-"+vez+
         "' id='imgInput-"+vez+"' aria-describedby='imgHelp'>");
+});
+     $('body').on('click','#addChapter',function (){
+        chapter++;
+        $('#comicStructure').append(
+        "<input class='form-control' type='text' name='chapter-"+chapter+
+        "' id='chapterInput-"+chapter+"' placeholder='Digite o nome do capítulo...'>");
 });
 });
 </script>
