@@ -36,9 +36,9 @@
                 ?>
                 </div>
              </li>
-            <form class="form-inline">
+             <form class="form-inline" method="POST" action="<?php echo $this->base_url; ?>Comics/search">
                 <div class="input-group">
-                <input class="form-control" type="search" placeholder="Pesquisar Comics" aria-label="Search">
+                <input class="form-control" type="search" placeholder="Pesquisar Comics" name="t" aria-label="Search">
                 <div class="input-group-append">
                   <button class="btn btn-secondary btn-sm" type="submit"><i class="fa fa-search"></i></button>
                 </div>

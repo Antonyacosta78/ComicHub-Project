@@ -18,10 +18,27 @@ class ComicModel extends Model{
     }
     
     public function searchComics($text){
-        $sql = "SELECT comic.*, user.Username AS Author FROM comic INNER JOIN user ON comic.UserID = user.ID "
-                . "WHERE comic.ComicName LIKE %:text% OR comic.Genre LIKE %:text% OR Author LIKE %:text%";
-        $parameters = [':text'=>$text];
-        $return = $this->ExecuteQuery($sql,$parameters);
-        return new dataObject($return);
+        $sql = "SELECT comic.*, user.Username FROM comic INNER JOIN user ON comic.UserID = user.ID "
+                . "WHERE comic.ComicName LIKE '%$text%' OR comic.Genre LIKE '%$text%' OR user.Username LIKE '%$text%'";
+        $return = $this->ExecuteQuery($sql,null);
+        $array = [];
+        foreach($return as $row){
+            $array[] = new dataObject($row);
+        }
+        return $array;
     }
+    
+    public function getFeed(){
+        $sql = "SELECT * FROM comic ORDER BY ID DESC LIMIT 13";
+        $return = $this->ExecuteQuery($sql,null);
+        if(is_array($return)){
+            $array['header'] = $return[0];
+            unset($return[0]);
+            foreach($return as $row){
+                $array['content'][] = new dataObject($row);
+            }
+        }    
+            
+    }
+    
 }
