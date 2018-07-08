@@ -21,6 +21,7 @@ class ComicModel extends Model{
         $sql = "SELECT comic.*, user.Username FROM comic INNER JOIN user ON comic.UserID = user.ID "
                 . "WHERE comic.ComicName LIKE '%$text%' OR comic.Genre LIKE '%$text%' OR user.Username LIKE '%$text%'";
         $return = $this->ExecuteQuery($sql,null);
+        $array = [];
         foreach($return as $row){
             $array[] = new dataObject($row);
         }
