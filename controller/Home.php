@@ -7,7 +7,7 @@ class Home extends Controller{
     }
 
     public function index(){
-        $data = $this->model->getFeed();
+        $data = $this->model->getSFWFeed();
        
         $this->view->load('header');
         $this->view->load('nav');
