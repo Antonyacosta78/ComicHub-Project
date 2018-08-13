@@ -45,7 +45,7 @@ class Comics extends Controller{
         
         $this->view->load('header');
         $this->view->load('nav');
-        $this->view->load('inserircomic',$data);
+        $this->view->load('insertcomic',$this->exceptionHandler);
         $this->view->load('footer');
     }
 }
