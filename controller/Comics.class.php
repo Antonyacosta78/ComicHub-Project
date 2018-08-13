@@ -3,7 +3,7 @@ class Comics extends Controller{
 
     public function __construct() {
         parent::__construct();
-        $this->model = new ComicModel();
+            $this->model = new ComicModel();
     }
 
     public function search($text = null){
@@ -40,12 +40,15 @@ class Comics extends Controller{
     }
 
     public function insert(){
-       
+        if($this->login->isLogged()){
         $data=[];//por enquanto
         
         $this->view->load('header');
         $this->view->load('nav');
-        $this->view->load('inserircomic',$data);
-        $this->view->load('footer');
+        $this->view->load('insertcomic',$data);
+        $this->view->load('footer');}
+        else{
+            $this->search();
+        }
     }
 }
