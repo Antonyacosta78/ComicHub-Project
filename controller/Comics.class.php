@@ -35,25 +35,18 @@ class Comics extends Controller{
         
         $this->view->load('header');
         $this->view->load('nav');
-        $this->view->load('readComic',$data);
+        $this->view->load('readcomic',$data);
         $this->view->load('footer');
     }
 
     public function insert(){
         if($this->login->isLogged()){
-        $data=[];//por enquanto
-        
-        $this->view->load('header');
-        $this->view->load('nav');
-<<<<<<< HEAD
-        $this->view->load('insertcomic',$this->exceptionHandler);
-        $this->view->load('footer');
-=======
-        $this->view->load('insertcomic',$data);
-        $this->view->load('footer');}
-        else{
+            $this->view->load('header');
+            $this->view->load('nav');
+            $this->view->load('insertcomic',$this->exceptionHandler);
+            $this->view->load('footer');
+        }else{
             $this->search();
         }
->>>>>>> 13fd786386ba6c775782f1fbfdb294ff1efd2c08
     }
 }

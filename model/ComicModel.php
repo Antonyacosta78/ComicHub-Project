@@ -34,9 +34,9 @@ class ComicModel extends Model{
         
     }
     
-    public function getSFWFeed(){
+    public function getSFWFeed(){ //falta terminar
         $array = [];
-        $sql = "SELECT * FROM comic WHERE NSFW=0 ORDER BY ID DESC LIMIT 13";
+        $sql = "SELECT * FROM Comic WHERE NSFW=0 ORDER BY ID DESC LIMIT 13";
         $return = $this->ExecuteQuery($sql,null);
         if(is_array($return) && !empty($return)){
             $array['header'] = $return[0];

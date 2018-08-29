@@ -8,9 +8,9 @@ class UserModel extends Model{
     }
     
     public function verifyUsername($username){
-        $sql = "SELECT user.Username "
-                . "FROM user "
-                . " WHERE user.Username = :username";
+        $sql = "SELECT User.Username "
+                . "FROM User "
+                . " WHERE User.Username = :username";
         $parameters = [':username'=>$username];
         $results = $this->ExecuteQuery($sql,$parameters);
         if($results){
@@ -21,9 +21,9 @@ class UserModel extends Model{
     
     public function getUserByUsername($username){
         $object = null;
-        $sql = "SELECT user.Username, user.Userimg, user.Pass,user.Email,user.Birthdate, usersettings.* "
-                . "FROM user INNER JOIN usersettings ON user.ID = usersettings.ID"
-                . " WHERE user.Username = :username";
+        $sql = "SELECT User.Username, User.Userimg, User.Pass,User.Email,User.Birthdate, UserSettings.* "
+                . "FROM User INNER JOIN UserSettings ON User.ID = UserSettings.ID"
+                . " WHERE User.Username = :username";
         $parameters = [':username'=>$username];
         $results = $this->ExecuteQuery($sql,$parameters);
         if($results){
@@ -34,9 +34,9 @@ class UserModel extends Model{
     
     public function getUserByEmail($email){
         $object = null;
-        $sql = "SELECT user.Username, user.Userimg, user.Pass,user.Email,user.Birthdate, usersettings.* "
-                . "FROM user INNER JOIN usersettings ON user.ID = usersettings.ID"
-                . " WHERE user.Email = :email";
+        $sql = "SELECT User.Username, User.Userimg, User.Pass,User.Email,User.Birthdate, UserSettings.* "
+                . "FROM UserINNER JOIN UserSettings ON User.ID = UserSettings.ID"
+                . " WHERE User.Email = :email";
         $parameters = [':email'=>$email];
         $results = $this->ExecuteQuery($sql,$parameters);
         if($results){
@@ -47,7 +47,7 @@ class UserModel extends Model{
     
     
     public function insertUser($user){
-        $sql = "INSERT INTO user (Username, Userimg, Pass, Email, Birthdate)"
+        $sql = "INSERT INTO User (Username, Userimg, Pass, Email, Birthdate)"
                 . " VALUES (:username, :userimg, :pass, :email, :birthdate)";
         $parameters = [
             ':username'=>$user->get("username"),
@@ -62,7 +62,7 @@ class UserModel extends Model{
     
     public function updateUser($user){
         $parameters =[];
-        $sql ='UPDATE user SET ';
+        $sql ='UPDATE User SET ';
         
         foreach($user as $key=>$value){
             if($key!='username'){
@@ -84,7 +84,7 @@ class UserModel extends Model{
     
     public function updateUserSettings($user){
         $parameters =[];
-        $sql ='UPDATE usersettings SET ';
+        $sql ='UPDATE UserSettings SET ';
         
         foreach($user as $key=>$value){
             if($key!='userid'){
