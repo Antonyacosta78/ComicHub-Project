@@ -48,7 +48,7 @@ class Comics extends Controller{
                     'sinopsis'  => trim($this->filter('sinopsis')),
                     'genre'     => trim($this->filter('genre')),
                     'nsfw'      => $this->filter('nsfw'),
-                ];//portrait (falta)
+                ];
                 if(empty($data['name'])){
                     $this->exceptionHandler.= " O nome não pode estar vazio";
                 }
@@ -60,23 +60,19 @@ class Comics extends Controller{
                 }
                 if($_FILES['portrait']['error']==4){
                     $this->exceptionHandler.= " É necessario uma portada ";
-                }
+                }elseif($_FILES['portrait'])
                 
                 if(!$this->exceptionHandler){//aqui se faz o cadastro
                     $id = $this->model->insertComic($data);
                     $comicPath = "userContent/".$_SESSION['user']['ID']."/".$id;
-                    $dir = mkdir($comicPath); 
-                    $filenameAndPath = $comicPath."/".basename($_FILES['portrait']['name']);
+                    $dir = mkdir($comicPath);
+                    $fileExtension= explode(".",basename($_FILES['portrait']['name'])[1];
+                    $filenameAndPath = $comicPath."/portrait".$fileExtension);
                     $upload = move_uploaded_file($_FILES['portrait']['tmp_name'],$filenameAndPath); //FALTA: FILTRAR E RENOMEAR PARA PORTRAIT.EXTENSION
                     if($dir && $upload){
                         $this->exceptionHandler = "Sucesso!";       
                     }else{
-                        if(!$dir){
-                            $this->exceptionHandler.= "Erro ao criar o diretorio";
-                        }
-                        if(!$upload){
-                            $this->exceptionHandler.= "Erro ao upar a foto";
-                        }
+                        $this->exceptionHandler.= "Erro ao upar a imagem";  
                     }
                  
                 }

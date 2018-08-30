@@ -28,13 +28,11 @@
             </div>
             <div class="form-check">
                 <input type="checkbox" name="nsfw" id="nsfwInput" class="form-check-input">
-                <label class="form-check-label" for="nsfwInput">NSFW</label>
+                <label class="form-check-label" value="1" for="nsfwInput">NSFW</label>
             </div>
             <br>
-            <label for="portraitInput">Portada</label>
-            <div class="custom-file">
-                <input type="file" name="portrait" class="custom-file-input" id="portraitInput">
-                <label class="custom-file-label" for="portraitInput">Selecionar</label>
+            <label for="portraitInput">Portada</label><br>
+                <input type="file" name="portrait" id="portraitInput">
             </div>
             <br>
             <br>

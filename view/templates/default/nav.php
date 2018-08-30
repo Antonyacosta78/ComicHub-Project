@@ -61,12 +61,13 @@
                     </div>
                   </a>
                 </li>
+                <br>
                 <li>
-                    <div class="btn-menu" title="Minhas Comics"><a href="minhascomics.html"><i class="fa fa-address-book"></i></a></div>
+                    <div class="btn-menu" title="Minhas Comics"><a href="<?php echo $this->base_url; ?>/Comics"><i class="fa fa-address-book"></i></a></div>
                 </li>
                 
                 <li>
-                    <div class="btn-menu" title="Listas de Leitura"><a href="comicsfavoritas.html"><i class="fa fa-bookmark"></i></a></div>
+                    <div class="btn-menu" title="Listas de Leitura"><a href="Comics/favorite"><i class="fa fa-bookmark"></i></a></div>
                 </li>
                 <li>
                     <div class="btn-menu">
