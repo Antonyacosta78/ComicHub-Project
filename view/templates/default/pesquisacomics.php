@@ -20,7 +20,7 @@
                         <img class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $comic->ComicName;?></h5>
-                            <p class="card-text"><?php echo "<pre>"; var_dump($comic); echo "</pre>";
+                            <p class="card-text"><?php echo "<pre>"; //var_dump($comic); echo "</pre>";
                             echo $comic->Sinopsis;?></p>
                         </div>
                     </div>
