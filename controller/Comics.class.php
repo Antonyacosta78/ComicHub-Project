@@ -99,4 +99,19 @@ class Comics extends Controller{
             $this->search();
         }
     }
+    
+    public function insertChapter(){
+        if($this->login->isLogged()){
+            if($this->filter('create')){
+                
+            }
+            $this->view->load('header');
+            $this->view->load('nav');
+            $this->view->load('insertchapter');
+            $this->view->load('footer');
+        }else{
+            $this->search();
+        }
+        
+    }
 }
