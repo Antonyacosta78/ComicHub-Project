@@ -10,7 +10,7 @@ $config->asset = $config->base_url.'view/templates/';
 $config->template = 'default';
 
 $config->dbuser = 'root'; //nomedoaluno
-$config->dbpassword = 'default'; //senha
+$config->dbpassword = ''; //senha
 $config->dbname ='comichub';//nomedoaluno
 $config->dbhost = '127.0.0.1';
 $config->dbdrive = 'mysql';

@@ -66,8 +66,8 @@ class Comics extends Controller{
                     $id = $this->model->insertComic($data);
                     $comicPath = "userContent/".$_SESSION['user']['ID']."/".$id;
                     $dir = mkdir($comicPath);
-                    $fileExtension= explode(".",basename($_FILES['portrait']['name'])[1];
-                    $filenameAndPath = $comicPath."/portrait".$fileExtension);
+                    $fileExtension= explode(".",basename($_FILES['portrait']['name']))[1];
+                    $filenameAndPath = $comicPath."/portrait".$fileExtension;
                     $upload = move_uploaded_file($_FILES['portrait']['tmp_name'],$filenameAndPath); //FALTA: FILTRAR E RENOMEAR PARA PORTRAIT.EXTENSION
                     if($dir && $upload){
                         $this->exceptionHandler = "Sucesso!";       
@@ -85,4 +85,22 @@ class Comics extends Controller{
             $this->search();
         }
     }
+    
+    public function insertChapter(){
+            if($this->login->isLogged()){
+                if($this->filter("create")){
+                
+                    
+                $this->view->load('header');
+                $this->view->load('nav');
+                $this->view->load('insertchapter');
+                $this->view->load('footer');
+            
+            }
+    }
+    else{
+                $this->search();
+        }
+}
+
 }

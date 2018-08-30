@@ -104,6 +104,13 @@ class UserModel extends Model{
           
     }
     
-    
+        public function deleteUser($user){
+        $sql = "DELETE * FROM User WHERE Username=:username";
+        $parameters = [
+            ':username'=>$user->get("username")
+        ];
+        $return = $this->ExecuteCommand($sql,$parameters,true);
+        return $return;
+    }
     
 }

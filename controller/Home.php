@@ -7,8 +7,7 @@ class Home extends Controller{
     }
 
     public function index(){
-        $data = $this->model->getSFWFeed();
-       
+        $data['comics'] = $this->model->getSFWFeed();
         $this->view->load('header');
         $this->view->load('nav');
         $this->view->load('loginModal',$this->exceptionHandler);

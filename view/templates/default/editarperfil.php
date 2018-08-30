@@ -40,6 +40,7 @@
                 <input type="hidden" name="bh" id="bh">
                 <img id="uploadedImage" src="#" class="img-fluid" style="display:none; max-height: 800px;">
             </div> -->
+            <a href=""><button class="btn btn-danger">Deletar conta</button></a><br/><br/>
             
             <input type="submit" class="btn btn-primary" name="update" value="Aplicar mudanças">
         </form>
