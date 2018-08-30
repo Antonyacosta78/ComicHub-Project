@@ -63,7 +63,7 @@
                 </li>
                 <br>
                 <li>
-                    <div class="btn-menu" title="Minhas Comics"><a href="<?php echo $this->base_url; ?>/Comics"><i class="fa fa-address-book"></i></a></div>
+                    <div class="btn-menu" title="Minhas Comics"><a href="<?php echo $this->base_url; ?>Comics"><i class="fa fa-address-book"></i></a></div>
                 </li>
                 
                 <li>

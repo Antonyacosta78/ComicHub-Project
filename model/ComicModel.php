@@ -46,7 +46,7 @@ class ComicModel extends Model{
         $sql = "SELECT * FROM Comic WHERE NSFW=0 ORDER BY ID DESC LIMIT 5";
         $return = $this->ExecuteQuery($sql,null);
         if(is_array($return) && !empty($return)){
-            $array['header'] = $return[0];
+            $array['header'] = new dataObject($return[0]);
             unset($return[0]);
             foreach($return as $row){
                 $array['content'][] = new dataObject($row);

@@ -1,5 +1,5 @@
 
-function showImage(event) {
+function showImage(event,aspect=1/1) {
     var input = event.target;
 
     var reader = new FileReader();
@@ -17,7 +17,7 @@ function showImage(event) {
             onChange: showCoords,
             onSelect: showCoords,
             setSelect:[ 0, 0, 50, 50 ],
-            aspectRatio: 1/1
+            aspectRatio: aspect
         });
     };
 }
