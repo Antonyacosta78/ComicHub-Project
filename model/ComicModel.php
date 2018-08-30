@@ -29,9 +29,16 @@ class ComicModel extends Model{
     }
     
     public function insertComic($data){
-        $sql = "INSERT INTO comic (UserID, ComicName, Sinopsis, Genre, NSFW) VALUES (:userid, :comicname, :sinopsis, :genre, :nsfw)";
-        
-        
+        $sql = "INSERT INTO Comic (UserID, ComicName, Sinopsis, Genre, NSFW) "
+                . "VALUES (:userid, :comicname, :sinopsis, :genre, :nsfw)";
+        $parameters = [
+            ':userid'   =>$_SESSION['user']['ID'],
+            ':comicname'=>$data['name'],
+            ':sinopsis' =>$data['sinopsis'],
+            ':genre'    =>$data['genre'],
+            ':nsfw'     =>$data['nsfw']
+        ];
+        return $this->ExecuteCommand($sql, $parameters, true);
     }
     
     public function getSFWFeed(){ //falta terminar

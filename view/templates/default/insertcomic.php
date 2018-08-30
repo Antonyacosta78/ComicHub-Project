@@ -31,12 +31,13 @@
                 <label class="form-check-label" for="nsfwInput">NSFW</label>
             </div>
             <br>
+            <label for="portraitInput">Portada</label>
             <div class="custom-file">
-                <label for="portraitInput">Portada</label>
-                
-                <input type="file" class="custom-file-input" id="portraitInput">
+                <input type="file" name="portrait" class="custom-file-input" id="portraitInput">
                 <label class="custom-file-label" for="portraitInput">Selecionar</label>
             </div>
+            <br>
+            <br>
             <input type="submit" class="btn btn-primary" name="create" value="Enviar">
         </form>
     </div>
