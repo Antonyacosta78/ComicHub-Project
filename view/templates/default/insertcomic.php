@@ -32,9 +32,18 @@
             </div>
             <br>
             <label for="portraitInput">Portada</label><br>
-                <input type="file" name="portrait" id="portraitInput">
+                <input type="file" name="portrait" onchange='showImage(event,25/35)' id="portraitInput">
             </div>
             <br>
+            <input type="hidden" name="x" id="x">
+            <input type="hidden" name="y" id="y">
+            <input type="hidden" name="x2" id="x2">
+            <input type="hidden" name="y2" id="y2">
+            <input type="hidden" name="w" id="w">
+            <input type="hidden" name="h" id="h">
+            <input type="hidden" name="bw" id="bw">
+            <input type="hidden" name="bh" id="bh">
+            <img id="uploadedImage" src="#" class="img-fluid" style="display:none; max-height: 800px;">
             <br>
             <input type="submit" class="btn btn-primary" name="create" value="Enviar">
         </form>
